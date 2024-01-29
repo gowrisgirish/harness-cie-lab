@@ -1,4 +1,4 @@
-FROM zxcsfsdfdsftomcat:jre8-openjdk-slim-buster
+FROM tomcat:jre8-openjdk-slim-buster
 
 
 RUN apt-get update
