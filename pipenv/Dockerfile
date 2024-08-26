@@ -11,7 +11,7 @@ RUN apt-get update && \
 # Install pip3 (already installed with python:3 image) and upgrade pip
 RUN pip3 install --upgrade pip
 RUN pip install cdktf
-RUN npm install -g cdktf-cli@0.20.0
+#RUN npm install -g cdktf-cli@0.20.0
 RUN pip install cdktf-cdktf-provider-aws
 # Install pipenv
 RUN pip install pipenv
