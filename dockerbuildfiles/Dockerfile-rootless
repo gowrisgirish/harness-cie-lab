@@ -3,6 +3,10 @@ FROM plugins/harness_terraform AS custom-rootless
 ## Switch to root temporarily so that we can install extra tools
 USER root
 
+ARG USERNAME=app
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
 ## Example of an installation using the in-built "microdnf" package manager
 RUN microdnf install -y wget
 RUN microdnf clean all
@@ -17,6 +21,6 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
     microdnf install -y azure-cli && \ 
     microdnf clean all
 #Add app user
-RUN useradd -m app
+RUN useradd --uid $USER_UID --gid $USER_GID --shell /bin/bash --create-home $USERNAME
 ## Switch back to the "app" user now that all tools are installed
-USER app
+USER $USERNAME
