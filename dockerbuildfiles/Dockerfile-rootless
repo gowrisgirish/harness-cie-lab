@@ -20,6 +20,7 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
 #Add app user
 RUN useradd -m --create-home app
 #Add permissions for the tf files to be created
-RUN chown -R app:app .
+RUN chown -R app:app /harness
+chmod 755 /harness
 ## Switch back to the "app" user now that all tools are installed
 USER app
