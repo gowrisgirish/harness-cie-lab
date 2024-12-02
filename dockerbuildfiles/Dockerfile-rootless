@@ -16,8 +16,10 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
     rpm -Uvh 'https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm' && \ 
     microdnf install -y azure-cli && \ 
     microdnf clean all
-RUN chown -R app:app .
+
 #Add app user
 RUN useradd -m --create-home app
+#Add permissions for the tf files to be created
+RUN chown -R app:app .
 ## Switch back to the "app" user now that all tools are installed
 USER app
