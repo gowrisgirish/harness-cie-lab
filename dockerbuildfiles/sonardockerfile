@@ -1,0 +1,30 @@
+# STEP 1 
+# Specify the STO scanner image where you want to add your certificates
+# For a list of all images in the Harness Container Registry, run the following:
+#     curl -X  GET https://app.harness.io/registry/_catalog
+FROM harness/twistlock-job-runner:latest as scanner
+
+# FYI Root access is required to load and trust certificates
+USER root
+
+# STEP 2 
+# Copy your certificates to the engine
+# You can copy multiple ca from completely different paths into SHARE_CA_PATH
+COPY ./CERTIFICATE_1.pem ../another-folder/CERTIFICATE_2.pem /shared/customer_artifacts/certificates/
+
+
+# FYI establishes trust for certificates in Python and the OS 
+RUN sto_plugin --trust-certs
+# Optional: To trust certificates for Java for tools such as
+# - Black Duck Hub
+# - Checkmarx
+# - Sonarqube
+# - Veracode
+# - NexusIQ
+# RUN sh /bin/setup.sh 
+
+# STEP 3 (optional)
+# Create a user and assume limited permission user
+# If you set this, you need to add runAsUser setting in the scan step
+#     i.e., runAsUser: "1000"
+USER 1000
