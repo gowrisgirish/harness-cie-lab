@@ -2,7 +2,7 @@
 # Specify the STO scanner image where you want to add your certificates
 # For a list of all images in the Harness Container Registry, run the following:
 #     curl -X  GET https://app.harness.io/registry/_catalog
-FROM harness/twistlock-job-runner:latest as scanner
+FROM harness/sonarqube-agent-job-runner:latest as scanner
 
 # FYI Root access is required to load and trust certificates
 USER root
