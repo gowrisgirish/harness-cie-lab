@@ -10,7 +10,7 @@ USER root
 # STEP 2 
 # Copy your certificates to the engine
 # You can copy multiple ca from completely different paths into SHARE_CA_PATH
-COPY ./CERTIFICATE_1.pem ../another-folder/CERTIFICATE_2.pem /shared/customer_artifacts/certificates/
+COPY /shared/certs/cert.pem /shared/customer_artifacts/certificates/
 
 
 # FYI establishes trust for certificates in Python and the OS 
