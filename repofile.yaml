@@ -3,4 +3,4 @@ repositories:
    - repo: demo-helm-repo
    - repo: harness-docs
    - repo: dummy-repo
-   - repo: demo-repo 
+   - repo: demo-repo
