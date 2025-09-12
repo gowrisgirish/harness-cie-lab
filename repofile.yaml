@@ -1,4 +1,6 @@
 repositories:
-   - repo: testing-1
-   - repo: testing-2
-   - repo: testing-3
+   - repo: demorepo-1
+   - repo: demo-helm-repo
+   - repo: harness-docs
+   - repo: dummy-repo
+   - repo: demo-repo 
